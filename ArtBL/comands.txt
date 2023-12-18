@@ -1,0 +1,2 @@
+﻿Scaffold-DbContext "Server=DESKTOP-EODP1E7\SQLEXPRESS;Database=ArtProject;Trusted_Connection=True;encrypt=false;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Modelsa
+
