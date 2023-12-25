@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ArtBL
 {
-    internal class LevelsBL
+   public class LevelsBL
     {
+
+
     }
 }
