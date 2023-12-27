@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ArtBAL\ArtBL.csproj" />
     <ProjectReference Include="..\ArtDTO\ArtDTO.csproj" />
   </ItemGroup>
 

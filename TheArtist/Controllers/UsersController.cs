@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ArtBL;
+using ArtDL.Modelsa;
+using ArtDTO.DTO;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +11,17 @@ namespace TheArtist.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        IUsersBL usersBl;
+        public UsersController(IUsersBL usersBl)
+        {
+            usersBl = usersBl;
+        }
+
         // GET: api/<UsersController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<UserDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            return usersBl.getUsers();
         }
 
         // GET api/<UsersController>/5

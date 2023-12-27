@@ -9,7 +9,12 @@ namespace ArtDL
 {
     public class UsersDL : IUsersDL
     {
-        private ArtProjectContext _ArtProjectContext = new ArtProjectContext();
+        private ArtProjectContext _ArtProjectContext;
+
+        public UsersDL(ArtProjectContext artProjectContext)
+        {
+            _ArtProjectContext = artProjectContext;
+        }
 
         public List<User> GetUsers()
         {
@@ -21,7 +26,21 @@ namespace ArtDL
             catch (Exception ex)
             {
                 throw ex;
-                return null;
+            }
+        }
+        public async Task<bool> AddUsers(User user)
+        {
+            try
+            {
+               await _ArtProjectContext.Users.AddAsync(user);
+                _ArtProjectContext.SaveChanges();
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
             }
         }
 

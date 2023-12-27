@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArtDL.Modelsa;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,11 @@ namespace ArtDTO.DTO
         public string? Password { get; set; }
         public int? LevelId { get; set; }
         public string? Desc { get; set; }
+
+        public bool AddUsers(User res)
+        {
+            throw new NotImplementedException();
+        }
 
         //public virtual LevelDTO? Level { get; set; }
     }

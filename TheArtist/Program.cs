@@ -1,3 +1,6 @@
+using ArtBL;
+using ArtDL;
+using ArtDL.Modelsa;
 using ArtDTO;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(AutoMapping));
+builder.Services.AddScoped<IUsersBL, UsersBL>();
+builder.Services.AddScoped<IUsersDL, UsersDL>();
+
+builder.Services.AddScoped<ArtProjectContext>();
 
 var app = builder.Build();
 

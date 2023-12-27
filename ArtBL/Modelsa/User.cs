@@ -25,5 +25,10 @@ namespace ArtDL.Modelsa
         public virtual ICollection<CommentsGaleryJunior> CommentsGaleryJuniors { get; set; }
         public virtual ICollection<GaleryJunior> GaleryJuniors { get; set; }
         public virtual ICollection<GaleryMaster> GaleryMasters { get; set; }
+
+        public bool AddUsers(User res)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
