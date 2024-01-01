@@ -4,6 +4,8 @@ namespace ArtBL
 {
     public interface IUsersBL
     {
-        List<UserDTO> getUsers();
+        Task<List<UserDTO>> getUsers();
+        Task<bool> AddUsers(UserDTO userdto);
+        Task<bool> RemoveUsers(int userId);
     }
 }

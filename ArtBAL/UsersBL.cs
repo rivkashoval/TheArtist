@@ -24,9 +24,9 @@ namespace ArtBL
             this._mapper = mapper;
         }
 
-        public List<UserDTO> getUsers()
+        public async Task<List<UserDTO>> getUsers()
         {
-            List<User> res = usersDl.GetUsers();
+            List<User> res = await usersDl.GetUsers();
             List<UserDTO> users = _mapper.Map<List<UserDTO>>(res);
             return users;
         }
@@ -37,7 +37,7 @@ namespace ArtBL
             {
 
                 User user = _mapper.Map<User>(userdto);
-                bool isAddUsers =await usersDl.AddUsers(user);
+                bool isAddUsers = await usersDl.AddUsers(user);
                 return isAddUsers;
             }
             catch (Exception e)
@@ -47,6 +47,21 @@ namespace ArtBL
             }
         }
 
+        public async Task<bool> RemoveUsers(int userId)
+        {
+            try
+            {
+                User user = _mapper.Map<User>(userId);
+                bool isRemoveUsers = await usersDl.RemoveUsers(userId);
+                return isRemoveUsers;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
 
+
+        }
     }
 }

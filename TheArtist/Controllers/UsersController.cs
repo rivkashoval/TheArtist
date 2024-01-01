@@ -1,4 +1,5 @@
 ﻿using ArtBL;
+using ArtDL;
 using ArtDL.Modelsa;
 using ArtDTO.DTO;
 using Microsoft.AspNetCore.Mvc;
@@ -19,9 +20,9 @@ namespace TheArtist.Controllers
 
         // GET: api/<UsersController>
         [HttpGet]
-        public List<UserDTO> Get()
+        public async Task<List<UserDTO>> Get()
         {
-            return usersBl.getUsers();
+            return await usersBl.getUsers();
         }
 
         // GET api/<UsersController>/5
@@ -33,8 +34,9 @@ namespace TheArtist.Controllers
 
         // POST api/<UsersController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<bool> AddUsers([FromBody] UserDTO userdto)
         {
+           return await usersBl.AddUsers(userdto);
         }
 
         // PUT api/<UsersController>/5
@@ -45,8 +47,9 @@ namespace TheArtist.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<bool> RemoveUsers(int userId)
         {
+            return await usersBl.RemoveUsers(userId);
         }
     }
 }
