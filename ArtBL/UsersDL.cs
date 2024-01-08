@@ -78,12 +78,12 @@ namespace ArtDL
 
                 userToUpdate.FirstName = user.FirstName;
                 userToUpdate.LastName = user.LastName;
-
+                userToUpdate.Phone=user.Phone;
+                userToUpdate.Mail=user.Mail;
+                userToUpdate.Password=user.Password;
+                userToUpdate.LevelId = user.LevelId;
+                userToUpdate.Desc=user.Desc;    
                 _ArtProjectContext.Users.Update(userToUpdate);
-
-                //await _ArtProjectContext.Entry(user).State = EntityState.Modified;
-
-
 
                 await _ArtProjectContext.SaveChangesAsync();
                 return true;

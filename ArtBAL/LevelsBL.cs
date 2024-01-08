@@ -9,6 +9,7 @@ namespace ArtBL
    public class LevelsBL
     {
 
+        public void a() { }
 
     }
 }

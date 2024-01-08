@@ -26,9 +26,15 @@ namespace ArtBL
 
         public async Task<List<UserDTO>> getUsers()
         {
+            try { 
             List<User> res = await usersDl.GetUsers();
             List<UserDTO> users = _mapper.Map<List<UserDTO>>(res);
             return users;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public async Task<bool> AddUsers(UserDTO userdto)
@@ -61,7 +67,20 @@ namespace ArtBL
                 return false;
             }
 
+        }
 
+        public async Task<bool> UpdateUsers(UserDTO userdto, int userId)
+        {
+            try { 
+                User userToUpdate = _mapper.Map<User>(userdto);//בשורה זו אני ממירה את היוזר ליוזר DTO
+                bool isUpdate =await usersDl.UpdateUsers(userToUpdate, userId);
+                return isUpdate;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
     }
 }

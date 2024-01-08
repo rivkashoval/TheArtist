@@ -7,9 +7,9 @@ namespace ArtDL.Modelsa
     {
         public User()
         {
-            CommentsGaleryJuniors = new HashSet<CommentsGaleryJunior>();
-            GaleryJuniors = new HashSet<GaleryJunior>();
-            GaleryMasters = new HashSet<GaleryMaster>();
+            Commentsgaleryjuniors = new HashSet<Commentsgaleryjunior>();
+            Glerygunures = new HashSet<Glerygunure>();
+            Glerymasters = new HashSet<Glerymaster>();
         }
 
         public int Id { get; set; }
@@ -20,12 +20,10 @@ namespace ArtDL.Modelsa
         public string? Password { get; set; }
         public int? LevelId { get; set; }
         public string? Desc { get; set; }
+        public string? IdentityNumber { get; set; }
 
-        public virtual Level? Level { get; set; }
-        public virtual ICollection<CommentsGaleryJunior> CommentsGaleryJuniors { get; set; }
-        public virtual ICollection<GaleryJunior> GaleryJuniors { get; set; }
-        public virtual ICollection<GaleryMaster> GaleryMasters { get; set; }
-
-        
+        public virtual ICollection<Commentsgaleryjunior> Commentsgaleryjuniors { get; set; }
+        public virtual ICollection<Glerygunure> Glerygunures { get; set; }
+        public virtual ICollection<Glerymaster> Glerymasters { get; set; }
     }
 }

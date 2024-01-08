@@ -12,17 +12,17 @@ namespace TheArtist.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        IUsersBL usersBl;
+        IUsersBL _usersBl;
         public UsersController(IUsersBL usersBl)
         {
-            usersBl = usersBl;
+            _usersBl = usersBl;
         }
 
         // GET: api/<UsersController>
         [HttpGet]
         public async Task<List<UserDTO>> Get()
         {
-            return await usersBl.getUsers();
+            return await _usersBl.getUsers();
         }
 
         // GET api/<UsersController>/5
@@ -36,20 +36,24 @@ namespace TheArtist.Controllers
         [HttpPost]
         public async Task<bool> AddUsers([FromBody] UserDTO userdto)
         {
-           return await usersBl.AddUsers(userdto);
+           return await _usersBl.AddUsers(userdto);
         }
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<bool> UpdateUsers(UserDTO userdto, int userId)
         {
+            return await _usersBl.AddUsers(userdto);
+            
         }
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
         public async Task<bool> RemoveUsers(int userId)
         {
-            return await usersBl.RemoveUsers(userId);
+            return await  _usersBl.RemoveUsers(userId);
         }
+
+
     }
 }

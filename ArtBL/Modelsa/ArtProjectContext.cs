@@ -16,10 +16,10 @@ namespace ArtDL.Modelsa
         {
         }
 
-        public virtual DbSet<CommentsGaleryJunior> CommentsGaleryJuniors { get; set; } = null!;
+        public virtual DbSet<Commentsgaleryjunior> Commentsgaleryjuniors { get; set; } = null!;
         public virtual DbSet<Contact> Contacts { get; set; } = null!;
-        public virtual DbSet<GaleryJunior> GaleryJuniors { get; set; } = null!;
-        public virtual DbSet<GaleryMaster> GaleryMasters { get; set; } = null!;
+        public virtual DbSet<Glerygunure> Glerygunures { get; set; } = null!;
+        public virtual DbSet<Glerymaster> Glerymasters { get; set; } = null!;
         public virtual DbSet<Level> Levels { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
@@ -28,31 +28,29 @@ namespace ArtDL.Modelsa
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-EODP1E7\\SQLEXPRESS;Database=ArtProject;Trusted_Connection=True;encrypt=false;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-783IDMP\\SQLEXPRESS;Database=ArtProject;Trusted_Connection=True;encrypt=false;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CommentsGaleryJunior>(entity =>
+            modelBuilder.Entity<Commentsgaleryjunior>(entity =>
             {
-                entity.ToTable("CommentsGaleryJunior");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.ToTable("COMMENTSGALERYJUNIOR");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.Desc).HasMaxLength(50);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.CommentsGaleryJuniors)
+                    .WithMany(p => p.Commentsgaleryjuniors)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__COMMENTSG__UserI__32E0915F");
+                    .HasConstraintName("FK__COMMENTSG__UserI__440B1D61");
             });
 
             modelBuilder.Entity<Contact>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.ToTable("CONTACTS");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -65,11 +63,9 @@ namespace ArtDL.Modelsa
                 entity.Property(e => e.Phone).HasMaxLength(50);
             });
 
-            modelBuilder.Entity<GaleryJunior>(entity =>
+            modelBuilder.Entity<Glerygunure>(entity =>
             {
-                entity.ToTable("GaleryJunior");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.ToTable("GLERYGUNURES");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -80,16 +76,14 @@ namespace ArtDL.Modelsa
                 entity.Property(e => e.Url).HasMaxLength(50);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.GaleryJuniors)
+                    .WithMany(p => p.Glerygunures)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__GLERYGUNU__UserI__36B12243");
+                    .HasConstraintName("FK__GLERYGUNU__UserI__3F466844");
             });
 
-            modelBuilder.Entity<GaleryMaster>(entity =>
+            modelBuilder.Entity<Glerymaster>(entity =>
             {
-                entity.ToTable("GaleryMaster");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.ToTable("GLERYMASTER");
 
                 entity.Property(e => e.Desc).HasMaxLength(50);
 
@@ -98,29 +92,29 @@ namespace ArtDL.Modelsa
                 entity.Property(e => e.Url).HasMaxLength(50);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.GaleryMasters)
+                    .WithMany(p => p.Glerymasters)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__GLERYMAST__UserI__30F848ED");
+                    .HasConstraintName("FK__GLERYMAST__UserI__3C69FB99");
             });
 
             modelBuilder.Entity<Level>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Desc).HasMaxLength(50);
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.ToTable("USERS");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Desc).HasMaxLength(50);
 
                 entity.Property(e => e.FirstName).HasMaxLength(50);
+
+                entity.Property(e => e.IdentityNumber).HasMaxLength(50);
 
                 entity.Property(e => e.LastName).HasMaxLength(50);
 
@@ -131,11 +125,6 @@ namespace ArtDL.Modelsa
                 entity.Property(e => e.Password).HasMaxLength(50);
 
                 entity.Property(e => e.Phone).HasMaxLength(50);
-
-                entity.HasOne(d => d.Level)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.LevelId)
-                    .HasConstraintName("FK__USERS__LevelID__2E1BDC42");
             });
 
             OnModelCreatingPartial(modelBuilder);

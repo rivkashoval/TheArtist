@@ -14,6 +14,7 @@ namespace ArtDTO
         public AutoMapping()
         {
             CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<Level, LevelDTO>().ReverseMap();
         }
 
 
