@@ -57,7 +57,7 @@ namespace ArtBL
         {
             try
             {
-                User user = _mapper.Map<User>(userId);
+                //User user = _mapper.Map<User>(userId);
                 bool isRemoveUsers = await usersDl.RemoveUsers(userId);
                 return isRemoveUsers;
             }
@@ -81,6 +81,8 @@ namespace ArtBL
                 Console.WriteLine(e.Message);
                 return false;
             }
+
+            
         }
     }
 }

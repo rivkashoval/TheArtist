@@ -14,6 +14,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(AutoMapping));
 builder.Services.AddScoped<IUsersBL, UsersBL>();
 builder.Services.AddScoped<IUsersDL, UsersDL>();
+builder.Services.AddScoped<ILevelsBL, LevelsBL>();
+builder.Services.AddScoped<ILevelsDL, LevelsDL>();
 
 builder.Services.AddScoped<ArtProjectContext>();
 

@@ -25,13 +25,7 @@ namespace TheArtist.Controllers
             return await _usersBl.getUsers();
         }
 
-        // GET api/<UsersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+        
         // POST api/<UsersController>
         [HttpPost]
         public async Task<bool> AddUsers([FromBody] UserDTO userdto)
@@ -40,15 +34,20 @@ namespace TheArtist.Controllers
         }
 
         // PUT api/<UsersController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<bool> UpdateUsers(UserDTO userdto, int userId)
         {
-            return await _usersBl.AddUsers(userdto);
+
+            return await _usersBl.UpdateUsers(userdto, userId);
             
         }
 
+       
+
+
+
         // DELETE api/<UsersController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<bool> RemoveUsers(int userId)
         {
             return await  _usersBl.RemoveUsers(userId);
