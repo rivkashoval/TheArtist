@@ -42,10 +42,6 @@ namespace TheArtist.Controllers
             
         }
 
-       
-
-
-
         // DELETE api/<UsersController>/5
         [HttpDelete]
         public async Task<bool> RemoveUsers(int userId)

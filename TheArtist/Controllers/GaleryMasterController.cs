@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ArtBL;
+using ArtDTO.DTO;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,24 +10,24 @@ namespace TheArtist.Controllers
     [ApiController]
     public class GaleryMasterController : ControllerBase
     {
-        // GET: api/<GleryMasterController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        IGaleryMasterBL _galeryMastersBl;
+        public GaleryMasterController(IGaleryMasterBL galeryMastersBl)
         {
-            return new string[] { "value1", "value2" };
+            _galeryMastersBl = galeryMastersBl;
         }
 
-        // GET api/<GleryMasterController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/<GleryMasterController>
+        [HttpGet]
+        public async Task<List<GaleryMasterDTO>> Get()
         {
-            return "value";
+            return await _galeryMastersBl.GetGaleryMaster();
         }
 
         // POST api/<GleryMasterController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<bool> AddGaleryMaster([FromBody] GaleryMasterDTO galeryMasterdto)
         {
+            return await _galeryMastersBl.AddGaleryMaster(galeryMasterdto);
         }
 
         // PUT api/<GleryMasterController>/5
@@ -36,8 +38,9 @@ namespace TheArtist.Controllers
 
         // DELETE api/<GleryMasterController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<bool> RemoveGaleryMaster(int galerymasterId)
         {
+            return await _galeryMastersBl.RemoveGaleryMaster(galerymasterId);
         }
     }
 }

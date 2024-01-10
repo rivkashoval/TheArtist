@@ -16,7 +16,10 @@ builder.Services.AddScoped<IUsersBL, UsersBL>();
 builder.Services.AddScoped<IUsersDL, UsersDL>();
 builder.Services.AddScoped<ILevelsBL, LevelsBL>();
 builder.Services.AddScoped<ILevelsDL, LevelsDL>();
-
+builder.Services.AddScoped<IGaleryMasterDL, GaleryMasterDL>();
+builder.Services.AddScoped<IGaleryMasterBL, GaleryMasterBL>();
+builder.Services.AddScoped<IGaleryJuniorDL, GaleryJuniorDL>();
+builder.Services.AddScoped<IGaleryJuniorBL, GaleryJuniorBL>();
 builder.Services.AddScoped<ArtProjectContext>();
 
 var app = builder.Build();

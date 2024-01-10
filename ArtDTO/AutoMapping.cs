@@ -15,7 +15,8 @@ namespace ArtDTO
         {
             CreateMap<User, UserDTO>().ReverseMap();
             CreateMap<Level, LevelDTO>().ReverseMap();
-
+            CreateMap<Glerymaster, GaleryMasterDTO>().ReverseMap();
+            CreateMap<Glerygunure, GaleryJuniorDTO>().ReverseMap();
         }
 
 
