@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ArtBL;
+using ArtDTO.DTO;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,25 +10,26 @@ namespace TheArtist.Controllers
     [ApiController]
     public class ContactsController : ControllerBase
     {
+        IContactsBL _contactsBl;
+        public ContactsController(IContactsBL contactsBl)
+        {
+            _contactsBl = contactsBl;
+        }
         // GET: api/<ContactsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<ContactDTO>> GetContacts()
         {
-            return new string[] { "value1", "value2" };
+            return await _contactsBl.GetContacts();
         }
 
-        // GET api/<ContactsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+     
         // POST api/<ContactsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<bool> AddContacts([FromBody] ContactDTO contactdto)
         {
+            return await _contactsBl.AddContacts(contactdto);
         }
+
 
         // PUT api/<ContactsController>/5
         [HttpPut("{id}")]
@@ -36,8 +39,9 @@ namespace TheArtist.Controllers
 
         // DELETE api/<ContactsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<bool> RemoveContacts(int contactId)
         {
+            return await _contactsBl.RemoveContacts(contactId);
         }
     }
 }

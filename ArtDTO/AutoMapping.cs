@@ -1,4 +1,5 @@
-﻿using ArtDL.Modelsa;
+﻿using ArtDL;
+using ArtDL.Modelsa;
 using ArtDTO.DTO;
 using AutoMapper;
 using System;
@@ -17,6 +18,8 @@ namespace ArtDTO
             CreateMap<Level, LevelDTO>().ReverseMap();
             CreateMap<Glerymaster, GaleryMasterDTO>().ReverseMap();
             CreateMap<Glerygunure, GaleryJuniorDTO>().ReverseMap();
+            CreateMap<Contact, ContactDTO>().ReverseMap();
+            CreateMap<Commentsgaleryjunior, CommentsGaleryJuniorDTO>().ReverseMap();
         }
 
 

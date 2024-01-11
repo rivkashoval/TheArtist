@@ -20,6 +20,10 @@ builder.Services.AddScoped<IGaleryMasterDL, GaleryMasterDL>();
 builder.Services.AddScoped<IGaleryMasterBL, GaleryMasterBL>();
 builder.Services.AddScoped<IGaleryJuniorDL, GaleryJuniorDL>();
 builder.Services.AddScoped<IGaleryJuniorBL, GaleryJuniorBL>();
+builder.Services.AddScoped<IContactsDL, ContactsDL>();
+builder.Services.AddScoped<IContactsBL, ContactsBL>();
+builder.Services.AddScoped<ICommentsGaleryJuniorDL, CommentsGaleryJuniorDL>();
+builder.Services.AddScoped<ICommentsGaleryJuniorBL, CommentsGaleryJuniorBL>();
 builder.Services.AddScoped<ArtProjectContext>();
 
 var app = builder.Build();

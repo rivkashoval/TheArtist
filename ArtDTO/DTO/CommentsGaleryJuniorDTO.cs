@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArtDTO.DTO
 {
-    internal class CommentsGaleryJuniorDTO
+    public class CommentsGaleryJuniorDTO
     {
         public int Id { get; set; }
         public string? Desc { get; set; }
