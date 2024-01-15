@@ -45,14 +45,18 @@ namespace ArtDL.Modelsa
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.CommentsGaleryJuniors)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__COMMENTSG__UserI__440B1D61");
+                    .HasConstraintName("FK_CommentsGaleryJunior_Users");
             });
 
             modelBuilder.Entity<Contact>(entity =>
             {
+                entity.HasNoKey();
+
                 entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.DetaIls).HasMaxLength(50);
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Mail).HasMaxLength(50);
 
@@ -76,7 +80,7 @@ namespace ArtDL.Modelsa
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.GaleryJuniors)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__GLERYGUNU__UserI__3F466844");
+                    .HasConstraintName("FK_GaleryJunior_Users");
             });
 
             modelBuilder.Entity<GaleryMaster>(entity =>
@@ -92,7 +96,7 @@ namespace ArtDL.Modelsa
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.GaleryMasters)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__GLERYMAST__UserI__3C69FB99");
+                    .HasConstraintName("FK_GaleryMaster_Users");
             });
 
             modelBuilder.Entity<Level>(entity =>
@@ -121,6 +125,11 @@ namespace ArtDL.Modelsa
                 entity.Property(e => e.Password).HasMaxLength(50);
 
                 entity.Property(e => e.Phone).HasMaxLength(50);
+
+                entity.HasOne(d => d.Level)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.LevelId)
+                    .HasConstraintName("FK_Users_Levels");
             });
 
             OnModelCreatingPartial(modelBuilder);

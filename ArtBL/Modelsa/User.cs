@@ -22,6 +22,7 @@ namespace ArtDL.Modelsa
         public string? Desc { get; set; }
         public string? IdentityNumber { get; set; }
 
+        public virtual Level? Level { get; set; }
         public virtual ICollection<CommentsGaleryJunior> CommentsGaleryJuniors { get; set; }
         public virtual ICollection<GaleryJunior> GaleryJuniors { get; set; }
         public virtual ICollection<GaleryMaster> GaleryMasters { get; set; }
