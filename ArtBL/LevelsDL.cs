@@ -63,5 +63,33 @@ namespace ArtDL
                 throw ex;
             }
         }
+
+        //עדכון
+        public async Task<bool> UpdateLevels(Level level, int levelId)
+
+        {
+            try
+            {
+
+                Level levelToUpdate = await _ArtProjectContext.Levels.Where(item => item.Id == levelId).FirstOrDefaultAsync();
+
+                levelToUpdate.Desc=level.Desc;
+                levelToUpdate.Id=levelId;
+                _ArtProjectContext.Levels.Update(levelToUpdate);
+                await _ArtProjectContext.SaveChangesAsync();
+                return true;
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                throw ex;
+
+            }
+
+
+        }
     }
 }

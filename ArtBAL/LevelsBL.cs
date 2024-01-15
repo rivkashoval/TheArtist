@@ -67,8 +67,24 @@ namespace ArtBL
             }
 
         }
-  
-        
-        
+        public async Task<bool> UpdateLevels(LevelDTO leveldto, int levelId)
+        {
+            try
+            {
+                Level levelToUpdate = _mapper.Map<Level>(leveldto);//בשורה זו אני ממירה את היוזר ליוזר DTO
+                bool isUpdate = await levelsDl.UpdateLevels(levelToUpdate, levelId);
+                return isUpdate;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+
+        }
     }
+
+
+
 }

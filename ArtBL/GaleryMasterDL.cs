@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,6 +66,36 @@ namespace ArtDL
                 return false;
                 throw ex;
             }
+        }
+        //עדכון
+        public async Task<bool> UpdateGaleryMaster(Glerymaster galerymaster, int galerymasterId)
+
+        {
+            try
+            {
+
+                Glerymaster galerymasterToUpdate = await _ArtProjectContext.Glerymasters.Where(item => item.Id == galerymasterId).FirstOrDefaultAsync();
+                galerymasterToUpdate.Name = galerymasterToUpdate.Name;
+                galerymasterToUpdate.Desc= galerymaster.Desc;
+                galerymasterToUpdate.Year = galerymasterToUpdate.Year;
+                galerymasterToUpdate.UserId = galerymasterToUpdate.UserId;
+                galerymasterToUpdate.Url = galerymasterToUpdate.Url;    
+                _ArtProjectContext.Glerymasters.Update(galerymasterToUpdate);
+
+                await _ArtProjectContext.SaveChangesAsync();
+                return true;
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                throw ex;
+
+            }
+
+
         }
     }
 }

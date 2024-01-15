@@ -46,8 +46,11 @@ namespace TheArtist.Controllers
 
         // PUT api/<LevelsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<bool> UpdateLevels(LevelDTO leveldto, int levelId)
         {
+
+            return await _levelsBl.UpdateLevels(leveldto, levelId);
+
         }
 
         // DELETE api/<LevelsController>/5

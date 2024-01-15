@@ -66,5 +66,20 @@ namespace ArtBL
 
         }
 
+        public async Task<bool> UpdateGaleryMaster(GaleryMasterDTO galeryaMasterdto, int galeryMasterid)
+        {
+            try
+            {
+                Glerymaster galeryMasterToUpdate = _mapper.Map<Glerymaster>(galeryaMasterdto);//בשורה זו אני ממירה את היוזר ליוזר DTO
+                bool isUpdate = await galeryMasterDl.UpdateGaleryMaster(galeryMasterToUpdate, galeryMasterid);
+                return isUpdate;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+        }
     }
 }
