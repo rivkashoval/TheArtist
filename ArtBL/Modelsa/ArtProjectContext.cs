@@ -16,10 +16,10 @@ namespace ArtDL.Modelsa
         {
         }
 
-        public virtual DbSet<Commentsgaleryjunior> Commentsgaleryjuniors { get; set; } = null!;
+        public virtual DbSet<CommentsGaleryJunior> CommentsGaleryJuniors { get; set; } = null!;
         public virtual DbSet<Contact> Contacts { get; set; } = null!;
-        public virtual DbSet<Glerygunure> Glerygunures { get; set; } = null!;
-        public virtual DbSet<Glerymaster> Glerymasters { get; set; } = null!;
+        public virtual DbSet<GaleryJunior> GaleryJuniors { get; set; } = null!;
+        public virtual DbSet<GaleryMaster> GaleryMasters { get; set; } = null!;
         public virtual DbSet<Level> Levels { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
@@ -34,24 +34,22 @@ namespace ArtDL.Modelsa
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Commentsgaleryjunior>(entity =>
+            modelBuilder.Entity<CommentsGaleryJunior>(entity =>
             {
-                entity.ToTable("COMMENTSGALERYJUNIOR");
+                entity.ToTable("CommentsGaleryJunior");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.Desc).HasMaxLength(50);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Commentsgaleryjuniors)
+                    .WithMany(p => p.CommentsGaleryJuniors)
                     .HasForeignKey(d => d.UserId)
                     .HasConstraintName("FK__COMMENTSG__UserI__440B1D61");
             });
 
             modelBuilder.Entity<Contact>(entity =>
             {
-                entity.ToTable("CONTACTS");
-
                 entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.DetaIls).HasMaxLength(50);
@@ -63,9 +61,9 @@ namespace ArtDL.Modelsa
                 entity.Property(e => e.Phone).HasMaxLength(50);
             });
 
-            modelBuilder.Entity<Glerygunure>(entity =>
+            modelBuilder.Entity<GaleryJunior>(entity =>
             {
-                entity.ToTable("GLERYGUNURES");
+                entity.ToTable("GaleryJunior");
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
@@ -76,14 +74,14 @@ namespace ArtDL.Modelsa
                 entity.Property(e => e.Url).HasMaxLength(50);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Glerygunures)
+                    .WithMany(p => p.GaleryJuniors)
                     .HasForeignKey(d => d.UserId)
                     .HasConstraintName("FK__GLERYGUNU__UserI__3F466844");
             });
 
-            modelBuilder.Entity<Glerymaster>(entity =>
+            modelBuilder.Entity<GaleryMaster>(entity =>
             {
-                entity.ToTable("GLERYMASTER");
+                entity.ToTable("GaleryMaster");
 
                 entity.Property(e => e.Desc).HasMaxLength(50);
 
@@ -92,7 +90,7 @@ namespace ArtDL.Modelsa
                 entity.Property(e => e.Url).HasMaxLength(50);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Glerymasters)
+                    .WithMany(p => p.GaleryMasters)
                     .HasForeignKey(d => d.UserId)
                     .HasConstraintName("FK__GLERYMAST__UserI__3C69FB99");
             });
@@ -106,8 +104,6 @@ namespace ArtDL.Modelsa
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.ToTable("USERS");
-
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Desc).HasMaxLength(50);

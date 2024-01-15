@@ -4,8 +4,8 @@ namespace ArtDL
 {
     public interface ICommentsGaleryJuniorDL
     {
-        Task<List<Commentsgaleryjunior>> GetCommentsgaleryjuniors();
-        Task<bool> AddCommentsgaleryjuniors(Commentsgaleryjunior commentsgaleryjuniors);
-        Task<bool> RemoveCommentsgaleryjuniors(int commentsgaleryjuniorId);
+        Task<List<CommentsGaleryJunior>> GetCommentsGaleryJuniors();
+        Task<bool> AddCommentsGaleryJuniors(CommentsGaleryJunior CommentsGaleryJuniors);
+        Task<bool> RemoveCommentsGaleryJuniors(int CommentsGaleryJuniorId);
     }
 }

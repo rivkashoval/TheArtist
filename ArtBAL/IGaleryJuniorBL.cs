@@ -6,6 +6,7 @@ namespace ArtBL
     {
         Task<List<GaleryJuniorDTO>> GetGaleryJunior();
         Task<bool> AddGaleryJunior(GaleryJuniorDTO galeryJuniordto);
-        Task<bool> RemoveGaleryJunior(int glerygunureId);
+        Task<bool> RemoveGaleryJunior(int GaleryJuniorId);
+        Task<bool> UpdateGaleryJunior(GaleryJuniorDTO galeryJuniordto, int GaleryJuniorId);
     }
 }

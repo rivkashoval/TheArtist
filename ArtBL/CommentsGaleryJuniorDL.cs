@@ -17,11 +17,11 @@ namespace ArtDL
             _ArtProjectContext = artProjectContext;
         }
         //get
-        public async Task<List<Commentsgaleryjunior>> GetCommentsgaleryjuniors()
+        public async Task<List<CommentsGaleryJunior>> GetCommentsGaleryJuniors()
         {
             try
             {
-                List<Commentsgaleryjunior> commentsgaleryjuniors = await _ArtProjectContext.Commentsgaleryjuniors.ToListAsync();
+                List<CommentsGaleryJunior> commentsgaleryjuniors = await _ArtProjectContext.CommentsGaleryJuniors.ToListAsync();
                 return commentsgaleryjuniors;
             }
             catch (Exception ex)
@@ -30,11 +30,11 @@ namespace ArtDL
             }
         }
 
-        public async Task<bool> AddCommentsgaleryjuniors(Commentsgaleryjunior commentsgaleryjuniors)
+        public async Task<bool> AddCommentsGaleryJuniors(CommentsGaleryJunior commentsgaleryjuniors)
         {
             try
             {
-                await _ArtProjectContext.Commentsgaleryjuniors.AddAsync(commentsgaleryjuniors);
+                await _ArtProjectContext.CommentsGaleryJuniors.AddAsync(commentsgaleryjuniors);
                 _ArtProjectContext.SaveChanges();
                 return true;
             }
@@ -46,13 +46,13 @@ namespace ArtDL
             }
         }
         //מחיקה
-        public async Task<bool> RemoveCommentsgaleryjuniors(int commentsgaleryjuniorId)
+        public async Task<bool> RemoveCommentsGaleryJuniors(int commentsgaleryjuniorId)
         {
             try
             {
 
-                Commentsgaleryjunior commentsgaleryjuniors = await _ArtProjectContext.Commentsgaleryjuniors.FirstOrDefaultAsync(item => item.Id == commentsgaleryjuniorId);
-                _ArtProjectContext.Commentsgaleryjuniors.Remove(commentsgaleryjuniors);
+                CommentsGaleryJunior commentsgaleryjuniors = await _ArtProjectContext.CommentsGaleryJuniors.FirstOrDefaultAsync(item => item.Id == commentsgaleryjuniorId);
+                _ArtProjectContext.CommentsGaleryJuniors.Remove(commentsgaleryjuniors);
                 await _ArtProjectContext.SaveChangesAsync();
                 return true;
             }

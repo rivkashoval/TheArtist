@@ -18,11 +18,11 @@ namespace ArtDL
             _ArtProjectContext = artProjectContext;
         }
         //get
-        public async Task<List<Glerymaster>> GetGaleryMaster()
+        public async Task<List<GaleryMaster>> GetGaleryMaster()
         {
             try
             {
-                List<Glerymaster> galeryMaster =await _ArtProjectContext.Glerymasters.ToListAsync();
+                List<GaleryMaster> galeryMaster =await _ArtProjectContext.GaleryMasters.ToListAsync();
                 return galeryMaster;
             }
             catch (Exception ex)
@@ -33,11 +33,11 @@ namespace ArtDL
 
 
         //הוספה
-        public async Task<bool> AddGaleryMaster(Glerymaster galerymaster)
+        public async Task<bool> AddGaleryMaster(GaleryMaster galerymaster)
         {
             try
             {
-                await _ArtProjectContext.Glerymasters.AddAsync(galerymaster);
+                await _ArtProjectContext.GaleryMasters.AddAsync(galerymaster);
                 _ArtProjectContext.SaveChanges();
                 return true;
             }
@@ -55,8 +55,8 @@ namespace ArtDL
             try
             {
 
-                Glerymaster galerymaster = await _ArtProjectContext.Glerymasters.FirstOrDefaultAsync(item => item.Id == galerymasterId);
-                _ArtProjectContext.Glerymasters.Remove(galerymaster);
+                GaleryMaster galerymaster = await _ArtProjectContext.GaleryMasters.FirstOrDefaultAsync(item => item.Id == galerymasterId);
+                _ArtProjectContext.GaleryMasters.Remove(galerymaster);
                 await _ArtProjectContext.SaveChangesAsync();
                 return true;
             }
@@ -68,19 +68,19 @@ namespace ArtDL
             }
         }
         //עדכון
-        public async Task<bool> UpdateGaleryMaster(Glerymaster galerymaster, int galerymasterId)
+        public async Task<bool> UpdateGaleryMaster(GaleryMaster galerymaster, int galerymasterId)
 
         {
             try
             {
 
-                Glerymaster galerymasterToUpdate = await _ArtProjectContext.Glerymasters.Where(item => item.Id == galerymasterId).FirstOrDefaultAsync();
+                GaleryMaster galerymasterToUpdate = await _ArtProjectContext.GaleryMasters.Where(item => item.Id == galerymasterId).FirstOrDefaultAsync();
                 galerymasterToUpdate.Name = galerymasterToUpdate.Name;
                 galerymasterToUpdate.Desc= galerymaster.Desc;
                 galerymasterToUpdate.Year = galerymasterToUpdate.Year;
                 galerymasterToUpdate.UserId = galerymasterToUpdate.UserId;
                 galerymasterToUpdate.Url = galerymasterToUpdate.Url;    
-                _ArtProjectContext.Glerymasters.Update(galerymasterToUpdate);
+                _ArtProjectContext.GaleryMasters.Update(galerymasterToUpdate);
 
                 await _ArtProjectContext.SaveChangesAsync();
                 return true;

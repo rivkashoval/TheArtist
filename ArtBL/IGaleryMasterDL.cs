@@ -4,9 +4,9 @@ namespace ArtDL
 {
     public interface IGaleryMasterDL
     {
-        Task<List<Glerymaster>> GetGaleryMaster();
-        Task<bool> AddGaleryMaster(Glerymaster galerymaster);
+        Task<List<GaleryMaster>> GetGaleryMaster();
+        Task<bool> AddGaleryMaster(GaleryMaster galerymaster);
         Task<bool> RemoveGaleryMaster(int galerymasterId);
-        Task<bool> UpdateGaleryMaster(Glerymaster galerymaster, int galerymasterId);
+        Task<bool> UpdateGaleryMaster(GaleryMaster galerymaster, int galerymasterId);
     }
 }

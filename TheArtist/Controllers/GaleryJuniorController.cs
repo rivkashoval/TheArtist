@@ -34,15 +34,18 @@ namespace TheArtist.Controllers
 
         // PUT api/<GleryYunuresController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<bool> UpdateGaleryJunior(GaleryJuniorDTO galeryJuniordto, int GaleryJuniorId)
         {
+
+            return await _galeryJuniorBl.UpdateGaleryJunior(galeryJuniordto, GaleryJuniorId);
+
         }
 
         // DELETE api/<GleryYunuresController>/5
         [HttpDelete("{id}")]
-        public async Task<bool> RemoveGaleryJunior(int glerygunureId)
+        public async Task<bool> RemoveGaleryJunior(int GaleryJuniorId)
         {
-            return await _galeryJuniorBl.RemoveGaleryJunior(glerygunureId);
+            return await _galeryJuniorBl.RemoveGaleryJunior(GaleryJuniorId);
         }
     }
 }

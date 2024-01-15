@@ -4,8 +4,9 @@ namespace ArtDL
 {
     public interface IGaleryJuniorDL
     {
-        Task<List<Glerygunure>> GetGaleryJunior();
-        Task<bool> AddGaleryJunior(Glerygunure glerygunure);
-        Task<bool> RemoveGaleryJunior(int glerygunureId);
+        Task<List<GaleryJunior>> GetGaleryJunior();
+        Task<bool> AddGaleryJunior(GaleryJunior GaleryJunior);
+        Task<bool> RemoveGaleryJunior(int GaleryJuniorId);
+        Task<bool> UpdateGaleryJunior(GaleryJunior GaleryJunior, int GaleryJuniorId);
     }
 }

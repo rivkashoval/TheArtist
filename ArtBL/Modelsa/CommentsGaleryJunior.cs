@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ArtDL.Modelsa
 {
-    public partial class Commentsgaleryjunior
+    public partial class CommentsGaleryJunior
     {
         public int Id { get; set; }
         public string? Desc { get; set; }

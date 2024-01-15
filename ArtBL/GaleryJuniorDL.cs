@@ -17,12 +17,12 @@ namespace ArtDL
             _ArtProjectContext = artProjectContext;
         }
         //get
-        public async Task<List<Glerygunure>> GetGaleryJunior()
+        public async Task<List<GaleryJunior>> GetGaleryJunior()
         {
             try
             {
-                List<Glerygunure> glerygunure = await _ArtProjectContext.Glerygunures.ToListAsync();    
-                return glerygunure;
+                List<GaleryJunior> GaleryJunior = await _ArtProjectContext.GaleryJuniors.ToListAsync();    
+                return GaleryJunior;
             }
             catch (Exception ex)
             {
@@ -31,11 +31,11 @@ namespace ArtDL
         }
 
         //הוספה
-        public async Task<bool> AddGaleryJunior(Glerygunure glerygunure)
+        public async Task<bool> AddGaleryJunior(GaleryJunior GaleryJunior)
         {
             try
             {
-                await _ArtProjectContext.Glerygunures.AddAsync(glerygunure);
+                await _ArtProjectContext.GaleryJuniors.AddAsync(GaleryJunior);
                 _ArtProjectContext.SaveChanges();
                 return true;
             }
@@ -48,12 +48,12 @@ namespace ArtDL
         }
 
         //מחיקה
-        public async Task<bool> RemoveGaleryJunior(int glerygunureId)
+        public async Task<bool> RemoveGaleryJunior(int GaleryJuniorId)
         {
             try
             {
-                Glerygunure glerygunure = await _ArtProjectContext.Glerygunures.FirstOrDefaultAsync(item => item.Id == glerygunureId);
-                _ArtProjectContext.Glerygunures.Remove(glerygunure);
+                GaleryJunior GaleryJunior = await _ArtProjectContext.GaleryJuniors.FirstOrDefaultAsync(item => item.Id == GaleryJuniorId);
+                _ArtProjectContext.GaleryJuniors.Remove(GaleryJunior);
                 await _ArtProjectContext.SaveChangesAsync();
                 return true;
             }
@@ -63,6 +63,40 @@ namespace ArtDL
                 return false;
                 throw ex;
             }
+        }
+        //עדכון
+        public async Task<bool> UpdateGaleryJunior(GaleryJunior GaleryJunior, int GaleryJuniorId)
+
+        {
+            try
+            {
+
+                GaleryJunior GaleryJuniorToUpdate = await _ArtProjectContext.GaleryJuniors.Where(item => item.Id == GaleryJuniorId).FirstOrDefaultAsync();
+
+                GaleryJuniorToUpdate.Name=GaleryJunior.Name;
+                GaleryJuniorToUpdate.Desc=GaleryJunior.Desc;
+                GaleryJuniorToUpdate.Date=GaleryJunior.Date;
+                GaleryJuniorToUpdate.UserId=GaleryJunior.UserId;
+                GaleryJuniorToUpdate.Url=GaleryJunior.Url;
+                GaleryJuniorToUpdate.Like=GaleryJunior.Like;  
+
+
+                _ArtProjectContext.GaleryJuniors.Update(GaleryJuniorToUpdate);
+
+                await _ArtProjectContext.SaveChangesAsync();
+                return true;
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                throw ex;
+
+            }
+
+
         }
 
 

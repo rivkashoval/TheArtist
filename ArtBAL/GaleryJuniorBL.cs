@@ -26,7 +26,7 @@ namespace ArtBL
         {
             try
             {
-                List<Glerygunure> res = await galeryJuniorDl.GetGaleryJunior();
+                List<GaleryJunior> res = await galeryJuniorDl.GetGaleryJunior();
                 List<GaleryJuniorDTO> galeryJuniors = _mapper.Map<List<GaleryJuniorDTO>>(res);
                 return galeryJuniors;
             }
@@ -41,7 +41,7 @@ namespace ArtBL
             try
             {
 
-                Glerygunure galeryJuniors = _mapper.Map<Glerygunure>(galeryJuniordto);
+                GaleryJunior galeryJuniors = _mapper.Map<GaleryJunior>(galeryJuniordto);
                 bool isAddGaleryJunior = await galeryJuniorDl.AddGaleryJunior(galeryJuniors);
                 return isAddGaleryJunior;
             }
@@ -52,12 +52,12 @@ namespace ArtBL
             }
         }
 
-        public async Task<bool> RemoveGaleryJunior(int glerygunureId)
+        public async Task<bool> RemoveGaleryJunior(int GaleryJuniorId)
         {
             try
             {
                 //User user = _mapper.Map<User>(userId);
-                bool isRemoveGaleryJunior = await galeryJuniorDl.RemoveGaleryJunior(glerygunureId);
+                bool isRemoveGaleryJunior = await galeryJuniorDl.RemoveGaleryJunior(GaleryJuniorId);
                 return isRemoveGaleryJunior;
             }
             catch (Exception e)
@@ -65,6 +65,22 @@ namespace ArtBL
                 Console.WriteLine(e.Message);
                 return false;
             }
+
+        }
+        public async Task<bool> UpdateGaleryJunior(GaleryJuniorDTO galeryJuniordto, int GaleryJuniorId)
+        {
+            try
+            {
+                GaleryJunior GaleryJuniorToUpdate = _mapper.Map<GaleryJunior>(galeryJuniordto);//בשורה זו אני ממירה את היוזר ליוזר DTO
+                bool isUpdate = await galeryJuniorDl.UpdateGaleryJunior(GaleryJuniorToUpdate, GaleryJuniorId);
+                return isUpdate;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
 
         }
     }

@@ -7,5 +7,6 @@ namespace ArtBL
         Task<List<GaleryMasterDTO>> GetGaleryMaster();
         Task<bool> AddGaleryMaster(GaleryMasterDTO galeryMasterdto);
         Task<bool> RemoveGaleryMaster(int galerymasterId);
+        Task<bool> UpdateGaleryMaster(GaleryMasterDTO galeryaMasterdto, int galeryMasterid);
     }
 }

@@ -26,7 +26,7 @@ namespace ArtBL
         {
             try
             {
-                List<Commentsgaleryjunior> res = await commentsGaleryJuniorsDl.GetCommentsgaleryjuniors();
+                List<CommentsGaleryJunior> res = await commentsGaleryJuniorsDl.GetCommentsGaleryJuniors();
                 List<CommentsGaleryJuniorDTO> commentsGaleryJuniors = _mapper.Map<List<CommentsGaleryJuniorDTO>>(res);
                 return commentsGaleryJuniors;
             }
@@ -41,8 +41,8 @@ namespace ArtBL
             try
             {
 
-                Commentsgaleryjunior commentsGaleryJuniors = _mapper.Map<Commentsgaleryjunior>(commentsGaleryJuniorDTO);
-                bool isAddCommentsgaleryjuniors = await commentsGaleryJuniorsDl.AddCommentsgaleryjuniors(commentsGaleryJuniors);
+                CommentsGaleryJunior commentsGaleryJuniors = _mapper.Map<CommentsGaleryJunior>(commentsGaleryJuniorDTO);
+                bool isAddCommentsgaleryjuniors = await commentsGaleryJuniorsDl.AddCommentsGaleryJuniors(commentsGaleryJuniors);
                 return isAddCommentsgaleryjuniors;
             }
             catch (Exception e)
@@ -56,7 +56,7 @@ namespace ArtBL
             try
             {
                 //User user = _mapper.Map<User>(userId);
-                bool isRemoveCommentsgaleryjuniors = await commentsGaleryJuniorsDl.RemoveCommentsgaleryjuniors(commentsgaleryjuniorId);
+                bool isRemoveCommentsgaleryjuniors = await commentsGaleryJuniorsDl.RemoveCommentsGaleryJuniors(commentsgaleryjuniorId);
                 return isRemoveCommentsgaleryjuniors;
             }
             catch (Exception e)

@@ -26,7 +26,7 @@ namespace ArtBL
         {
             try
             {
-                List<Glerymaster> res = await galeryMasterDl.GetGaleryMaster();
+                List<GaleryMaster> res = await galeryMasterDl.GetGaleryMaster();
                 List<GaleryMasterDTO> users = _mapper.Map<List<GaleryMasterDTO>>(res);
                 return users;
             }
@@ -40,7 +40,7 @@ namespace ArtBL
             try
             {
 
-                Glerymaster galeryMaster = _mapper.Map<Glerymaster>(galeryMasterdto);
+                GaleryMaster galeryMaster = _mapper.Map<GaleryMaster>(galeryMasterdto);
                 bool isAddGaleryMaster = await galeryMasterDl.AddGaleryMaster(galeryMaster);
                 return isAddGaleryMaster;
             }
@@ -70,7 +70,7 @@ namespace ArtBL
         {
             try
             {
-                Glerymaster galeryMasterToUpdate = _mapper.Map<Glerymaster>(galeryaMasterdto);//בשורה זו אני ממירה את היוזר ליוזר DTO
+                GaleryMaster galeryMasterToUpdate = _mapper.Map<GaleryMaster>(galeryaMasterdto);//בשורה זו אני ממירה את היוזר ליוזר DTO
                 bool isUpdate = await galeryMasterDl.UpdateGaleryMaster(galeryMasterToUpdate, galeryMasterid);
                 return isUpdate;
             }
