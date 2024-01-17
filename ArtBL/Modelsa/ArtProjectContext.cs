@@ -122,6 +122,10 @@ namespace ArtDL.Modelsa
 
                 entity.Property(e => e.Phone).HasMaxLength(50);
 
+                entity.Property(e => e.ProfilImgPath)
+                    .HasMaxLength(50)
+                    .HasColumnName("profilImgPath");
+
                 entity.HasOne(d => d.Level)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.LevelId)
