@@ -8,6 +8,8 @@ namespace ArtDL
         Task<bool> AddUsers(User user);
         Task<bool> RemoveUsers(int userId);
         Task<bool> UpdateUsers(User user, int userId);
+        Task<User> Login(string email, string password);
+
     }
 
 }

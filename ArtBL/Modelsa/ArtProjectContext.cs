@@ -28,7 +28,7 @@ namespace ArtDL.Modelsa
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-783IDMP\\SQLEXPRESS;Database=ArtProject;Trusted_Connection=True;encrypt=false;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-EODP1E7\\SQLEXPRESS;Database=ArtProject;Trusted_Connection=True;encrypt=false;");
             }
         }
 
@@ -45,18 +45,14 @@ namespace ArtDL.Modelsa
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.CommentsGaleryJuniors)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_CommentsGaleryJunior_Users");
+                    .HasConstraintName("FK__COMMENTSG__UserI__32E0915F");
             });
 
             modelBuilder.Entity<Contact>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.DetaIls).HasMaxLength(50);
-
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Mail).HasMaxLength(50);
 
@@ -80,7 +76,7 @@ namespace ArtDL.Modelsa
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.GaleryJuniors)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_GaleryJunior_Users");
+                    .HasConstraintName("FK__GLERYGUNU__UserI__36B12243");
             });
 
             modelBuilder.Entity<GaleryMaster>(entity =>
@@ -96,7 +92,7 @@ namespace ArtDL.Modelsa
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.GaleryMasters)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_GaleryMaster_Users");
+                    .HasConstraintName("FK__GLERYMAST__UserI__30F848ED");
             });
 
             modelBuilder.Entity<Level>(entity =>
@@ -129,7 +125,7 @@ namespace ArtDL.Modelsa
                 entity.HasOne(d => d.Level)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.LevelId)
-                    .HasConstraintName("FK_Users_Levels");
+                    .HasConstraintName("FK__USERS__LevelID__2E1BDC42");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -25,7 +25,13 @@ namespace TheArtist.Controllers
             return await _usersBl.getUsers();
         }
 
-        
+        [HttpGet("Login")]
+        public async Task<UserDTO> Login(string email, string password)
+        {
+            return await _usersBl.Login(email,password);
+        }
+
+
         // POST api/<UsersController>
         [HttpPost]
         public async Task<bool> AddUsers([FromBody] UserDTO userdto)

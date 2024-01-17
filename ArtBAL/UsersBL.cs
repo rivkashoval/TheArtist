@@ -37,6 +37,20 @@ namespace ArtBL
             }
         }
 
+        public async Task<UserDTO> Login(string email, string password)
+        {
+            try
+            {
+                User res = await usersDl.Login(email,password);
+               UserDTO user = _mapper.Map<UserDTO>(res);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public async Task<bool> AddUsers(UserDTO userdto)
         {
             try

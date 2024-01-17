@@ -21,7 +21,8 @@ namespace ArtDL
         {
             try
             {
-                List<User> users =await  _ArtProjectContext.Users.ToListAsync();
+                //רק מסטר
+                List<User> users =await  _ArtProjectContext.Users.Where(x=>x.LevelId==2).ToListAsync();
                 return users;
             }
             catch (Exception ex)
@@ -30,13 +31,20 @@ namespace ArtDL
             }
         }
 
+
+        public async Task<User> Login(string email, string password)
+        {
+           User user= await _ArtProjectContext.Users.FirstOrDefaultAsync(x=>x.Mail==email&& x.Password==password);
+            return user;
+
+        }
         //הוספה
         public async Task<bool> AddUsers(User user)
         {
             try
             {
                await _ArtProjectContext.Users.AddAsync(user);
-                _ArtProjectContext.SaveChanges();
+                 await _ArtProjectContext.SaveChangesAsync();
                 return true;
             }
 
