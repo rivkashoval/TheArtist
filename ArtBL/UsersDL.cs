@@ -21,7 +21,7 @@ namespace ArtDL
         {
             try
             {
-                //רק מסטר
+                //רק מסטר;
                 List<User> users =await  _ArtProjectContext.Users.Where(x=>x.LevelId==2).ToListAsync();
                 return users;
             }
